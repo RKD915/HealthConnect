@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthConnect | Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <div class="logo"><i class="fa-solid fa-heart-pulse"></i> HealthConnect</div>
+    <ul class="nav-links">
+      <a href="/index.html" class="nav-item active"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="/meals.html" class="nav-item"><i class="fa-solid fa-utensils"></i> Meals</a>
+      <a href="/workouts.html" class="nav-item"><i class="fa-solid fa-dumbbell"></i> Workouts</a>
+      <a href="/feed.html" class="nav-item"><i class="fa-solid fa-users"></i> Social Feed</a>
+      <a href="/leaderboard.html" class="nav-item"><i class="fa-solid fa-trophy"></i> Leaderboard</a>
+    </ul>
+    <button class="logout-btn" onclick="triggerLogout()"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <header class="top-header">
+        <div>
+          <h1 class="page-title"><i class="fa-solid fa-chart-line" style="color: var(--primary); margin-right: 10px;"></i>Dashboard</h1>
+          <p class="page-subtitle" id="dateSubtitle"><i class="fa-regular fa-calendar" style="margin-right: 5px;"></i>Today</p>
+        </div>
+        <div class="user-profile">
+          <span style="font-weight: 500;" id="userNameTop">User</span>
+          <div class="avatar" id="userInitial">U</div>
+        </div>
+      </header>
+
+      <!-- AI Tip -->
+      <div class="ai-tip" id="aiTipContainer" style="display: none;">
+        <i class="fa-solid fa-lightbulb"></i>
+        <div>
+          <h4 style="margin-bottom: 0.25rem;">Daily Tip</h4>
+          <p id="aiTipText" style="color: var(--text-light); font-size: 0.95rem;">Keep up the great work!</p>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+        
+        <!-- Net Calories Card -->
+        <div class="card" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <h3 class="card-title"><i class="fa-solid fa-chart-pie" style="color: var(--accent); margin-right: 8px;"></i>Daily Progress</h3>
+          <div class="progress-container">
+            <div class="circular-progress" id="calorieProgress">
+              <span class="progress-value" id="netCaloriesVal">0</span>
+            </div>
+          </div>
+          <p style="margin-top: 1rem; color: var(--text-light); font-size: 0.9rem;"><i class="fa-solid fa-bullseye" style="margin-right: 5px; color: var(--primary);"></i>Remaining: <span id="remCaloriesVal" style="font-weight: 600; color: var(--text-dark); font-size: 1.1rem;">0</span> kcal</p>
+        </div>
+
+        <!-- Breakdown Cards -->
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+          <div class="card" style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="background-color: rgba(255, 107, 107, 0.1); color: var(--primary); padding: 1rem; border-radius: 12px; font-size: 1.5rem;">
+              <i class="fa-solid fa-apple-whole"></i>
+            </div>
+            <div>
+              <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">Consumed</p>
+              <h2 id="consumedVal">0 <span style="font-size: 1rem; color: var(--text-light); font-weight: 400;">kcal</span></h2>
+            </div>
+          </div>
+
+          <div class="card" style="display: flex; align-items: center; gap: 1.5rem;">
+            <div style="background-color: rgba(78, 205, 196, 0.1); color: var(--accent); padding: 1rem; border-radius: 12px; font-size: 1.5rem;">
+              <i class="fa-solid fa-fire"></i>
+            </div>
+            <div>
+              <p style="color: var(--text-light); font-size: 0.9rem; margin-bottom: 0.25rem;">Burned</p>
+              <h2 id="burnedVal">0 <span style="font-size: 1rem; color: var(--text-light); font-weight: 400;">kcal</span></h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+  <script src="/js/auth.js"></script>
+</body>
+</html>
